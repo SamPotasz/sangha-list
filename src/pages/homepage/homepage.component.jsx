@@ -9,7 +9,7 @@ import './homepage.styles.scss';
 
 const HomePage = ({sanghas, days}) => (
     <div className='homepage'>
-        <h2 className='title'>Find your sangha</h2>
+        <h1 className='title'>Find your sangha</h1>
         {
             Object.entries(days).map(
                 day => <DailySchedule day={day} /> )

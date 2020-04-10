@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Table } from 'react-bootstrap';
 
-import SanghaRow from '../sanghaRow/sanghaRow.component';
+import SanghaRow from '../sanghaRow/sanghaRow.component.jsx';
 import { selectDaySanghas } from '../../redux/sangha/sangha.selector';
 
 const DailySchedule = ({ day:[dayName], sanghas }) => {
@@ -12,12 +12,10 @@ const DailySchedule = ({ day:[dayName], sanghas }) => {
     <h2>{dayName.charAt(0).toUpperCase() + dayName.slice(1)}</h2>
     <Table bordered responsive='md' striped>
         <thead>
-            <th>Start</th>
-            <th>End</th>
+            <th>Time</th>
             <th>Sangha</th>
             <th>Teacher</th>
             <th>Org.</th>
-            <th>Donate</th>
             <th>Join</th>
         </thead>
         <tbody>
