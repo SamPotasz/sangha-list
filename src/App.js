@@ -2,18 +2,15 @@ import React from 'react';
 
 
 import Homepage from './pages/homepage/homepage.component';
-import TopNav from './components/topnav/topnav.component';
+// import TopNav from './components/topnav/topnav.component';
 
-import './App.css';
-import { Menu } from 'semantic-ui-react';
+import './App.styles.scss';
+import TopNav from './components/topnav/topnav.component';
 
 function App() {
   return (
     <div className="App">
-      <Menu fixed='top'>
-        <Menu.Item header>SanghaList</Menu.Item>
-        <Menu.Item >Online</Menu.Item>
-    </Menu>
+      <TopNav />
       <Homepage />
     </div>
   );

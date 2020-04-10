@@ -1,14 +1,14 @@
 import React from 'react';
 
-import { Container, Header, Sub, Menu } from 'semantic-ui-react';
+import { Navbar } from 'react-bootstrap';
 
-// import './topnav.styles.scss';
+import './topnav.styles.scss';
 
 const TopNav = () => (
-    <Menu fixed='top'>
-        <Menu.Item header>SanghaList</Menu.Item>
-        <Menu.Item >Online meditation communities in the time of COVID</Menu.Item>
-    </Menu>
+    <Navbar expand='lg' variant='light' bg='light'>
+        <Navbar.Brand>SanghaList</Navbar.Brand>
+        <Navbar.Text>Online meditation communities in the time of COVID</Navbar.Text>
+    </Navbar>
 )
 
 export default TopNav;
