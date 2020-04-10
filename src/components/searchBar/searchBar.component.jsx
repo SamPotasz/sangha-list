@@ -1,6 +1,8 @@
 import React from 'react';
-
+import { connect } from 'react-redux';
 import { Form, InputGroup } from 'react-bootstrap';
+
+import { setString } from '../../redux/search/search.actions';
 
 const SearchBar = ({handleChange}) => (
     <Form className='search-bar' onChange={handleChange}>
@@ -21,4 +23,8 @@ const SearchBar = ({handleChange}) => (
     </Form>
 )
 
-export default SearchBar;
+const mapDispatchToProps = (dispatch) => ({
+  handleChange: (event) => dispatch(setString(event.target.value))
+})
+
+export default connect(null, mapDispatchToProps)(SearchBar);

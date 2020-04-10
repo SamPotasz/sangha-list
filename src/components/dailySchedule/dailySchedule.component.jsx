@@ -33,8 +33,8 @@ const DailySchedule = ({ day:[dayName], sanghas }) => {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-    // sanghas: selectFilteredSanghasForDay(state.)
-    sanghas: selectDaySanghas(ownProps.day[0])(state)
+    sanghas: selectFilteredSanghasForDay(ownProps.day[0])(state)
+    // sanghas: selectDaySanghas(ownProps.day[0])(state)
 })
 
 export default connect(mapStateToProps)(DailySchedule);

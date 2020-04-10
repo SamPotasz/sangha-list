@@ -1,7 +1,6 @@
-
 import { createSelector } from 'reselect';
 
-// import 
+import { selectSearchString } from '../search/search.selector';
 
 const selectSangha = state => state.sangha;
 export const selectSanghaItems = createSelector(
@@ -20,18 +19,18 @@ export const selectDaySanghas = day => createSelector(
         sanghaItem => sanghaItem.hasOwnProperty(day))
 )
 
-// export const selectDaySanghas = day => state => {
-//     return selectSanghaItems(state).filter( sangha => sangha.hasOwnProperty(day) );
-// }
-
-export const selectFilteredSanghasForDay = searchString => day => state => {
-    const daySanghas = selectDaySanghas(day)(state);
-    const searchLC = searchString.toLowerCase();
-    return daySanghas.filter(sangha => 
-        sangha.name.toLowerCase().includes(searchLC) ||
-        sangha.teacher.toLowerCase().includes(searchLC) ||
-        sangha.organization.toLowerCase().includes(searchLC) )
-}
+export const selectFilteredSanghasForDay = day => createSelector(
+    [selectSanghaItems, selectSearchString],
+    (sanghaItems, searchString) => {
+        const searchLC = searchString.toLowerCase();
+        return searchLC ? 
+            sanghaItems.filter(sanghaItem => 
+                sanghaItem.hasOwnProperty(day) && 
+                (sanghaItem.name.toLowerCase().includes(searchLC) ))
+            : sanghaItems;
+        }
+    
+)
 
 //faster way when we have separate object mapping days to sanghas
 //modeled after https://dev.to/pigozzifr/how-to-store-relational-data-inside-redux-el6

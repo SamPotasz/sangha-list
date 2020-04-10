@@ -3,6 +3,7 @@ import { combineReducers } from 'redux';
 // import storage from 'redux-persist/lib/storage';    //use local storage
 
 import sanghaReducer from './sangha/sangha.reducer';
+import searchReducer from './search/search.reducer';
 
 // const persistConfig = {
 //     key: 'root',
@@ -12,6 +13,7 @@ import sanghaReducer from './sangha/sangha.reducer';
 
 const rootReducer = combineReducers({
     sangha: sanghaReducer,
+    search: searchReducer,
 })
 
 export default rootReducer;
