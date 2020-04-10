@@ -15,8 +15,17 @@ export const selectSangha = id => state => (
 )
 
 export const selectDaySanghas = day => state => {
-    console.log(day);
+    // console.log(day);
     return selectSanghaValues(state).filter( sangha => sangha.hasOwnProperty(day) );
+}
+
+export const selectFilteredSanghasForDay = searchString => day => state => {
+    const daySanghas = selectDaySanghas(day)(state);
+    const searchLC = searchString.toLowerCase();
+    return daySanghas.filter(sangha => 
+        sangha.name.toLowerCase().includes(searchLC) ||
+        sangha.teacher.toLowerCase().includes(searchLC) ||
+        sangha.organization.toLowerCase().includes(searchLC) )
 }
 
 //faster way when we have separate object mapping days to sanghas
