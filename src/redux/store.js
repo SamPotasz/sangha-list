@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware } from 'redux';
-import { persistStore } from 'redux-persist';  //allows browser to cache the store
+// import { persistStore } from 'redux-persist';  //allows browser to cache the store
 import logger from 'redux-logger';
 
 import rootReducer from './root-reducer';

@@ -4,7 +4,7 @@ import { createStructuredSelector } from 'reselect';
 
 import SearchBar from '../../components/searchBar/searchBar.component';
 import DailySchedule from '../../components/dailySchedule/dailySchedule.component';
-import { selectSanghaValues, selectDays } from '../../redux/sangha/sangha.selector';
+import { selectSanghaItems, selectDays } from '../../redux/sangha/sangha.selector';
 
 import './homepage.styles.scss';
 
@@ -15,13 +15,13 @@ const HomePage = ({sanghas, days}) => (
         
         {
             Object.entries(days).map(
-                day => <DailySchedule day={day} /> )
+                day => <DailySchedule key={day} day={day} /> )
         }
     </div>
 )
 
 const mapStateToProps = createStructuredSelector({
-    sanghas: selectSanghaValues,
+    sanghas: selectSanghaItems,
     days: selectDays
 })
 

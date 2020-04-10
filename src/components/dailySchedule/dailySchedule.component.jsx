@@ -24,7 +24,7 @@ const DailySchedule = ({ day:[dayName], sanghas }) => {
             </thead>
             <tbody>
             {
-                sanghas.map( sangha => <SanghaRow sangha={sangha} />)
+                sanghas.map( sangha => <SanghaRow key={sangha.id} sangha={sangha} />)
             }
             </tbody>
         </Table>
