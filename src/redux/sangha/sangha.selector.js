@@ -5,38 +5,44 @@ import { selectSearchString } from '../search/search.selector';
 const selectSangha = state => state.sangha;
 export const selectSanghaItems = createSelector(
     [selectSangha],
-    sangha => Object.values(sangha.data)
+    sangha => sangha.data
 )
 
+//get the list of all days/categories of sanghas (i.e. 'daily', 'monday', etc.)
 export const selectDays = createSelector(
     [selectSangha],
     sangha => sangha.days
 );
 
-export const selectDaySanghas = day => createSelector(
-    [selectSanghaItems],
-    sanghaItems => sanghaItems.filter(
-        sanghaItem => sanghaItem.hasOwnProperty(day))
-)
-
-export const selectFilteredSanghasForDay = day => createSelector(
-    [selectSanghaItems, selectSearchString],
-    (sanghaItems, searchString) => {
-        const searchLC = searchString.toLowerCase();
-        return searchLC ? 
-            sanghaItems.filter(sanghaItem => 
-                sanghaItem.hasOwnProperty(day) && 
-                (sanghaItem.name.toLowerCase().includes(searchLC) ))
-            : sanghaItems;
-        }
-    
-)
+//get all sanghas for the given day (unused)
+// export const selectDaySanghas = day => createSelector(
+//     [selectSanghaItems],
+//     sanghaItems => sanghaItems.filter(
+//         sanghaItem => sanghaItem.hasOwnProperty(day))
+// )
 
 //faster way when we have separate object mapping days to sanghas
 //modeled after https://dev.to/pigozzifr/how-to-store-relational-data-inside-redux-el6
-/*
-export const selectDaySanghas = day => state => {
-    const sanghaIDs = state.sangha.days[day] || [];
-    return sanghaIDs.map(sanghaId => selectSangha(sanghaId)(state));
-}
-*/
+export const selectDaySanghas = day => createSelector(
+    [selectSanghaItems, selectDays],
+    (sanghaItems, days) => {
+        const sanghaIDs = days[day] || [];
+        return sanghaIDs.map(sanghaId => sanghaItems[sanghaId.toString()]);
+    }
+)
+
+//get list of sanghas for a day filtered by search key
+export const selectFilteredSanghasForDay = day => createSelector(
+    [selectDaySanghas(day), selectSearchString],
+    (sanghaItems, searchString) => {
+        console.log(sanghaItems);
+        const searchLC = searchString.toLowerCase();
+        return searchLC ? 
+            sanghaItems.filter(sanghaItem => 
+                sanghaItem.name.toLowerCase().includes(searchLC) ||
+                sanghaItem.teacher.toLowerCase().includes(searchLC) ||
+                (sanghaItem.organization && sanghaItem.organization.toLowerCase().includes(searchLC)))
+            : sanghaItems.filter(sanghaItem => 
+                sanghaItem.hasOwnProperty(day));
+        }
+)
