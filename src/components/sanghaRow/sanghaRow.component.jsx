@@ -1,5 +1,4 @@
 import React from 'react';
-import moment from 'moment';
 
 import LinkableText from '../linkableTableData/linkableTableData.component';
 import TimeDisplay from '../timeDisplay/timeDisplay.component';

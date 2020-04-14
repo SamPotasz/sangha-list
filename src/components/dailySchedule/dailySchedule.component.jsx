@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Table } from 'react-bootstrap';
 
 import SanghaRow from '../sanghaRow/sanghaRow.component.jsx';
-import { selectDaySanghas, selectFilteredSanghasForDay } from '../../redux/sangha/sangha.selector';
+import { selectFilteredSanghasForDay } from '../../redux/sangha/sangha.selector';
 
 import './dailySchedule.styles.scss';
 

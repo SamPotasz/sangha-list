@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Form, InputGroup } from 'react-bootstrap';
+import { FaSearch } from 'react-icons/fa';
 
 import { setString } from '../../redux/search/search.actions';
 
@@ -16,7 +17,7 @@ const SearchBar = ({handleChange}) => (
               required
             />
             <InputGroup.Append>
-              <InputGroup.Text id="inputGroupAppend">&#128269;</InputGroup.Text>
+              <InputGroup.Text id="inputGroupAppend"><FaSearch/></InputGroup.Text>
             </InputGroup.Append>
           </InputGroup>
         </Form.Group>

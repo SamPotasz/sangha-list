@@ -35,7 +35,6 @@ export const selectDaySanghas = day => createSelector(
 export const selectFilteredSanghasForDay = day => createSelector(
     [selectDaySanghas(day), selectSearchString],
     (sanghaItems, searchString) => {
-        console.log(sanghaItems);
         const searchLC = searchString.toLowerCase();
         return searchLC ? 
             sanghaItems.filter(sanghaItem => 
