@@ -3,7 +3,7 @@ import moment from 'moment-timezone';
 import { TIMEZONE_ACTIONS } from './timezone.types';
 
 const INITIAL_STATE = {
-    currZone: null,
+    currZone: moment.tz.zone(moment.tz.guess()),
 }
 
 const timezoneReducer = (state = INITIAL_STATE, action) => {
@@ -15,9 +15,10 @@ const timezoneReducer = (state = INITIAL_STATE, action) => {
             }
         
         case TIMEZONE_ACTIONS.SET_ZONE_BY_NAME:
+
             return {
                 ...state,
-                currZone: moment.tz(action.payload) || state.currZone
+                currZone: moment.tz.zone(action.payload, false)
             }
         
         default: return state;

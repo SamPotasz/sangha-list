@@ -1,17 +1,23 @@
 import React from 'react';
+import { createStructuredSelector } from 'reselect';
 import { connect } from 'react-redux';
 import Select from 'react-select';
 
 import './tzPickerButton.styles.scss';
 
+import { selectCurrTimezone } from '../../redux/timezone/timezone.selector';
 import { setTimezone } from '../../redux/timezone/timezone.actions';
 import { data } from '../../redux/timezone/timezone.data';
 
 // const 
 
-const TzPickerButton = ({handleChange}) => (
+const TzPickerButton = ({handleChange, currZone}) => {
+    console.log(currZone);
+    console.log(currZone.name);
+    return(
     <div>
-        <Select options={data} onChange={handleChange}/>
+        <Select options={data} onChange={handleChange} 
+            defaultValue={currZone.name} />
         {/* <Button variant="outline-secondary" size="sm"
             onClick={()=>{
                 console.log(moment.tz.names())
@@ -19,11 +25,17 @@ const TzPickerButton = ({handleChange}) => (
                 }>
             <FaGlobe /> Time Zone </Button> */}
     </div>
-)
+)}
+
+const mapStateToProps = createStructuredSelector({
+    currZone: selectCurrTimezone
+})
 
 const mapDispatchToProps = (dispatch) => ({
     handleChange: 
         result => dispatch(setTimezone(result.value))
 })
 
-export default connect(null, mapDispatchToProps)(TzPickerButton);
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(TzPickerButton);
