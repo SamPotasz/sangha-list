@@ -27,7 +27,9 @@ const DailySchedule = ({ day:[dayName], sanghas }) => (
                 </thead>
                 <tbody>
                 {
-                    sanghas.map( sangha => <SanghaRow key={sangha.id} sangha={sangha} />)
+                    sanghas
+                        .filter( (sangha, i) => i < 5)
+                        .map( sangha => <SanghaRow key={sangha.id} sangha={sangha} />)
                 }
                 </tbody>
             </Table>

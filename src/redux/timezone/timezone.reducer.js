@@ -3,7 +3,8 @@ import moment from 'moment-timezone';
 import { TIMEZONE_ACTIONS } from './timezone.types';
 
 const INITIAL_STATE = {
-    currZone: moment.tz.zone(moment.tz.guess()),
+  currZone: moment.tz.zone('GMT')  
+  // currZone: moment.tz.zone(moment.tz.guess()),
 }
 
 const timezoneReducer = (state = INITIAL_STATE, action) => {

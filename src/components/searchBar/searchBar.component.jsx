@@ -6,22 +6,22 @@ import { FaSearch } from 'react-icons/fa';
 import { setString } from '../../redux/search/search.actions';
 
 const SearchBar = ({handleChange}) => (
-    <Form className='search-bar' onChange={handleChange}>
-        <Form.Group md="4" controlId="validationCustomUsername">
-          {/* <Form.Label>Username</Form.Label> */}
-          <InputGroup>
-            <Form.Control
-              type="text"
-              placeholder="search"
-              aria-describedby="inputGroupAppend"
-              required
-            />
-            <InputGroup.Append>
-              <InputGroup.Text id="inputGroupAppend"><FaSearch/></InputGroup.Text>
-            </InputGroup.Append>
-          </InputGroup>
-        </Form.Group>
-    </Form>
+  <Form className='search-bar' onChange={handleChange}>
+      <Form.Group md="4" controlId="validationCustomUsername">
+        <Form.Label>Search teachers and sanghas...</Form.Label>
+        <InputGroup>
+          <Form.Control
+            type="text"
+            placeholder="search"
+            aria-describedby="inputGroupAppend"
+            required
+          />
+          <InputGroup.Append>
+            <InputGroup.Text id="inputGroupAppend"><FaSearch/></InputGroup.Text>
+          </InputGroup.Append>
+        </InputGroup>
+      </Form.Group>
+  </Form>
 )
 
 const mapDispatchToProps = (dispatch) => ({
