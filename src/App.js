@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
+import { Route, Switch, Redirect, Router, BrowserRouter } from 'react-router-dom';
 
-import Homepage from './pages/homepage/homepage.component';
+import NowPage from './pages/now/now.component';
+import Directory from './pages/directory/directory.component';
+
 import TopNav from './components/topnav/topnav.component';
 
 import './App.styles.scss';
@@ -17,8 +20,13 @@ function App() {
 
   return (
     <div className="App">
+      <BrowserRouter>
       <TopNav />
-      <Homepage />
+        <Switch>
+          <Route exact path='/right-now' component={ NowPage } />
+          <Route path='/' component={ Directory } />
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }

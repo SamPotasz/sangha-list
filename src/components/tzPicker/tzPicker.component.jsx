@@ -11,7 +11,8 @@ import './tzPicker.styles.scss';
 
 const TzPicker = ({ currZone }) => (
     <div className='tz-picker'>
-      <span>Current time: { moment.tz(Date.now(), currZone.name).format('HH:MM') }</span>
+      <span>View times in </span>
+      {/* <span>Current time: { moment.tz(Date.now(), currZone.name).format('HH:MM') }</span> */}
       {/* <span>Offset: { currZone.parse(Date.now) }</span> */}
       <TzSelect />
     </div>

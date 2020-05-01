@@ -8,7 +8,7 @@ import TzPicker from '../../components/tzPicker/tzPicker.component';
 
 import { selectDays } from '../../redux/sangha/sangha.selector';
 
-import './homepage.styles.scss';
+import './directory.styles.scss';
 
 const HomePage = ({ days }) => (
     <div className='homepage'>
